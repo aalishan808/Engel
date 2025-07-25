@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+// app/layout.tsx
+import 'primereact/resources/themes/lara-light-indigo/theme.css'; // or any other theme
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
+import 'primeflex/primeflex.css';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
