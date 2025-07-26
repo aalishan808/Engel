@@ -64,13 +64,12 @@ const fetched: ProductFormData[] = snapshot.docs.map((doc) => {
     <Image src={rowData.imageUrl} alt={rowData.name} width={60} height={60} />
   );
 
-  const actionBodyTemplate = (rowData: any) => (
-    <div className="flex gap-2">
-      <Button icon="pi pi-pencil" rounded onClick={() => handleEdit(rowData)} />
-      <Button icon="pi pi-trash" severity="danger" rounded onClick={() => handleDelete(rowData.id)} />
-    </div>
-  );
-
+const actionBodyTemplate = (rowData: ProductFormData & { id: string }) => ( // Correctly type rowData
+  <div className="flex gap-2">
+    <Button icon="pi pi-pencil" rounded onClick={() => handleEdit(rowData)} />
+    <Button icon="pi pi-trash" severity="danger" rounded onClick={() => handleDelete(rowData.id)} />
+  </div>
+);
   return (
     <div className="card">
       <div className="flex justify-between mb-3">

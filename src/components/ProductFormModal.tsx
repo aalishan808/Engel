@@ -35,7 +35,6 @@ export default function ProductFormModal({
     register,
     control,
     handleSubmit,
-    setValue,
     reset,
     formState: { errors },
   } = useForm<ProductFormData>({

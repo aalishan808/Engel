@@ -11,7 +11,7 @@ const productsCol = collection(db, 'products');
 export const onProductsSnapshot = (cb: (data: Product[]) => void) => {
   const q = query(productsCol, orderBy('name'));
   return onSnapshot(q, snapshot =>
-    cb(snapshot.docs.map(d => ({ id: d.id, ...(d.data() as any) })))
+    cb(snapshot.docs.map(d => ({ id: d.id, ...(d.data() as Product) }))) // Cast as Product
   );
 };
 
