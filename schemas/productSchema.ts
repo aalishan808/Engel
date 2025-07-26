@@ -1,12 +1,12 @@
 import { z } from 'zod';
 
-export const productSchema = z.object({
-    name: z.string().min(1, 'Name is required'),
-    price: z.number().min(0, 'Price must be a positive number'),
-    image: z.string().url('Image must be a valid URL'),
-    status: z.enum(['In Stock', 'Out of Stock']),
-    excerpt: z.string().max(300, 'Excerpt must be at most 50 words'), // ~6 chars/word
-    isVisible: z.boolean(),
+export const ProductSchema = z.object({
+  name: z.string().min(1, "Name is required"),
+  description: z.string().min(1, "Description is required"),
+  price: z.number().min(0, "Price must be 0 or greater"),
+  stock: z.number().min(0, "Stock must be 0 or greater"),
+  category: z.string().min(1, "Category is required"),
+  imageUrl: z.string().url("Invalid image URL"),
 });
 
-export type ProductSchema = z.infer<typeof productSchema>;
+export type ProductFormData = z.infer<typeof ProductSchema>;
