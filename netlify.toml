@@ -1,23 +1,13 @@
 [build]
-  command = "CI= npm install --legacy-peer-deps && npm run build"
+  command = "npm install --legacy-peer-deps && npm run build"
   publish = ".next"
   functions = "functions"
 
 [build.environment]
   NODE_VERSION = "20"
   NEXT_PUBLIC_ANALYTICS_ID = "your-id"
-  ESLINT_NO_DEV_INSTALLS = "true"
   NEXT_TELEMETRY_DISABLED = "1"
   SKIP_TYPE_CHECK = "false"
-
-[context.production.environment]
-  NODE_ENV = "production"
-
-[context.deploy-preview.environment]
-  NODE_ENV = "development"
-
-[context.branch-deploy.environment]
-  NODE_ENV = "development"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
