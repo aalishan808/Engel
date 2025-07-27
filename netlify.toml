@@ -1,12 +1,17 @@
 [build]
-  command = "npm install && npm run build"
+  command = "CI= npm install --legacy-peer-deps && npm run build"
   publish = ".next"
   functions = "functions"
 
 [build.environment]
   NODE_VERSION = "20"
-  NPM_FLAGS = "--legacy-peer-deps"
   NEXT_PUBLIC_ANALYTICS_ID = "your-id"
 
 [context.production.environment]
   NODE_ENV = "production"
+
+[context.deploy-preview.environment]
+  NODE_ENV = "development"
+
+[context.branch-deploy.environment]
+  NODE_ENV = "development"
