@@ -6,6 +6,9 @@
 [build.environment]
   NODE_VERSION = "20"
   NEXT_PUBLIC_ANALYTICS_ID = "your-id"
+  # Add these environment variables:
+  ESLINT_NO_DEV_INSTALLS = "true"
+  NEXT_TELEMETRY_DISABLED = "1"
 
 [context.production.environment]
   NODE_ENV = "production"
