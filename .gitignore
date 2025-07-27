@@ -55,3 +55,5 @@ coverage/
 # Remove if you use these tools
 .eslintcache
 .stylelintcache"node_modules/" 
+".next/cache/" 
+".next/cache/" 
