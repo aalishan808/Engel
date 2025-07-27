@@ -4,7 +4,7 @@
   functions = "functions"
 
 [build.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION = "22"  # Matches your local v22.5.1
   NEXT_PUBLIC_ANALYTICS_ID = "your-id"
   NEXT_TELEMETRY_DISABLED = "1"
   SKIP_TYPE_CHECK = "false"

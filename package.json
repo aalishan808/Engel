@@ -10,8 +10,8 @@
     "postinstall": "echo 'Skipping build during install'"
   },
   "engines": {
-    "node": ">=20.0.0",
-    "npm": ">=9.0.0"
+  "node": ">=22.5.1",
+  "npm": ">=10.0.0"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.0",
