@@ -171,7 +171,7 @@
       "imgOptSequentialRead": null,
       "isrFlushToDisk": true,
       "workerThreads": false,
-      "optimizeCss": false,
+      "optimizeCss": true,
       "nextScriptWorkers": false,
       "scrollRestoration": false,
       "externalDir": false,
@@ -212,6 +212,7 @@
       "optimizeRouterScrolling": false,
       "strictNextHead": true,
       "optimizePackageImports": [
+        "primereact",
         "lucide-react",
         "date-fns",
         "lodash-es",
@@ -294,7 +295,6 @@
     "htmlLimitedBots": "Mediapartners-Google|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti",
     "bundlePagesRouterDependencies": false,
     "configFileName": "next.config.ts",
-    "swcMinify": true,
     "turbopack": {
       "root": "C:\\remote-next\\engel"
     }
@@ -319,7 +319,8 @@
     ".next\\BUILD_ID",
     ".next\\server\\next-font-manifest.js",
     ".next\\server\\next-font-manifest.json",
-    ".next\\required-server-files.json"
+    ".next\\required-server-files.json",
+    ".next\\static\\css\\53d2f77d28ff885d.css"
   ],
   "ignore": [
     "node_modules\\next\\dist\\compiled\\@ampproject\\toolbox-optimizer\\**\\*"

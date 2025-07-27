@@ -25,10 +25,10 @@ export const deleteProduct = async (id: string) => {
   return await deleteDoc(doc(productRef, id));
 };
 
-export const onProductsSnapshot = (callback: (data: any[]) => void) => {
+export const onProductsSnapshot = (callback: (data: Product[]) => void) => {
   const q = query(productRef, orderBy('name'));
   return onSnapshot(q, (snapshot) =>
-    callback(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })))
+    callback(snapshot.docs.map((doc) => ({ id: doc.id, ...(doc.data() as Omit<Product, 'id'>) })))
   );
 };
 

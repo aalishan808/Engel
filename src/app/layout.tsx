@@ -3,9 +3,8 @@ export const metadata: Metadata = {
   title: 'Product Management',
   description: 'Manage your product inventory',
 };
-import "tailwindcss/base";
-import "tailwindcss/components";
-import "tailwindcss/utilities";
+
+import './globals.css';  // Add this line
 
 export default function RootLayout({
   children,
