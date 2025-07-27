@@ -1,40 +1,41 @@
 import {
-  collection, addDoc, updateDoc, deleteDoc,
-  doc, onSnapshot, query, orderBy,
+  collection,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  doc,
+  onSnapshot,
+  query,
+  orderBy,
 } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { db, storage } from '@/firebase/config';
+import { db } from '../firebase/config';
 import { Product } from '@/models/product';
 
-const productsCol = collection(db, 'products');
+const productRef = collection(db, 'products');
 
-export const onProductsSnapshot = (cb: (data: Product[]) => void) => {
-  const q = query(productsCol, orderBy('name'));
-  return onSnapshot(q, snapshot =>
-cb(snapshot.docs.map(d => ({ id: d.id, ...(d.data() as Omit<Product, 'id'>) })))
-  );
+export const addProduct = async (product: Product) => {
+  return await addDoc(productRef, product);
 };
 
-export const addProduct = async (prod: Omit<Product, 'id'>, file?: File) => {
-  let imageUrl = prod.imageUrl;
-  if (file) {
-    const stRef = ref(storage, `products/${Date.now()}_${file.name}`);
-    const snap = await uploadBytes(stRef, file);
-    imageUrl = await getDownloadURL(snap.ref);
-  }
-  await addDoc(productsCol, { ...prod, imageUrl });
-};
-
-export const updateProduct = async (id: string, prod: Omit<Product, 'id'>, file?: File) => {
-  let imageUrl = prod.imageUrl;
-  if (file) {
-    const stRef = ref(storage, `products/${Date.now()}_${file.name}`);
-    const snap = await uploadBytes(stRef, file);
-    imageUrl = await getDownloadURL(snap.ref);
-  }
-  await updateDoc(doc(productsCol, id), { ...prod, imageUrl });
+export const updateProduct = async (id: string, product: Partial<Product>) => {
+  return await updateDoc(doc(productRef, id), product);
 };
 
 export const deleteProduct = async (id: string) => {
-  await deleteDoc(doc(productsCol, id));
+  return await deleteDoc(doc(productRef, id));
+};
+
+export const onProductsSnapshot = (callback: (data: any[]) => void) => {
+  const q = query(productRef, orderBy('name'));
+  return onSnapshot(q, (snapshot) =>
+    callback(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })))
+  );
+};
+
+export const saveProduct = async (id: string, product: Product) => {
+  if (id) {
+    return updateProduct(id, product);
+  } else {
+    return addProduct(product);
+  }
 };

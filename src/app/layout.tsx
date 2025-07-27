@@ -1,14 +1,11 @@
-import 'primereact/resources/themes/lara-light-indigo/theme.css';
-import 'primereact/resources/primereact.min.css';
-import 'primeicons/primeicons.css';
-import '@/styles/globals.css';
-
 import { Metadata } from 'next';
-
 export const metadata: Metadata = {
   title: 'Product Management',
   description: 'Manage your product inventory',
 };
+import "tailwindcss/base";
+import "tailwindcss/components";
+import "tailwindcss/utilities";
 
 export default function RootLayout({
   children,
@@ -18,10 +15,23 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* PrimeReact CSS */}
+        <link 
+          rel="stylesheet" 
+          href="https://unpkg.com/primereact@latest/resources/themes/lara-light-indigo/theme.css" 
+        />
+        <link 
+          rel="stylesheet" 
+          href="https://unpkg.com/primereact@latest/resources/primereact.min.css" 
+        />
+        <link 
+          rel="stylesheet" 
+          href="https://unpkg.com/primeicons@latest/primeicons.css" 
+        />
+        
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              // Remove problematic attributes added by extensions
               document.addEventListener('DOMContentLoaded', () => {
                 const body = document.body;
                 body.removeAttribute('cz-shortcut-listen');

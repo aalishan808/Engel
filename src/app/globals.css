@@ -1,0 +1,21 @@
+
+/* Your custom styles */
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  padding: 2rem;
+}
+
+.btn-add-product {
+  margin-bottom: 20px;
+  background-color: #007bff;
+  color: white;
+}
+
+nav {
+  padding: 1rem;
+  background-color: #343a40;
+  color: white;
+}

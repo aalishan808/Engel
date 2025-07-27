@@ -1,22 +1,24 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-   reactStrictMode: true,
-  swcMinify: true,
+  reactStrictMode: true,
+  // swcMinify is deprecated in latest Next.js - use the default optimization
   compiler: {
-    // Remove React-specific hydration warning attributes
     reactRemoveProperties: true,
-    // Remove console.logs in production
     removeConsole: process.env.NODE_ENV === 'production',
   },
-    images: {
+  images: {
     domains: [
-      'i.ibb.co', // ImgBB domain
-      'images.unsplash.com', // Example additional domain
-      'localhost', // For development
+      'i.ibb.co',
+      'images.unsplash.com',
+      'localhost',
     ],
   },
-  /* config options here */
+  // Add experimental CSS optimization for PrimeReact
+  experimental: {
+    optimizeCss: true,
+    optimizePackageImports: ["primereact"]
+  }
 };
 
 export default nextConfig;
