@@ -57,3 +57,7 @@ coverage/
 .stylelintcache"node_modules/" 
 ".next/cache/" 
 ".next/cache/" 
+.next/ 
+out/ 
+node_modules/ 
+.env 
