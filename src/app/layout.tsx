@@ -3,17 +3,38 @@ import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import '@/styles/globals.css';
 
-import Sidebar from '@/components/Sidebar';
-import Navbar from '@/components/Navbar';
+import { Metadata } from 'next';
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export const metadata: Metadata = {
+  title: 'Product Management',
+  description: 'Manage your product inventory',
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en">
-      <body className="flex">
-        <Sidebar />
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              // Remove problematic attributes added by extensions
+              document.addEventListener('DOMContentLoaded', () => {
+                const body = document.body;
+                body.removeAttribute('cz-shortcut-listen');
+                body.removeAttribute('data-new-gr-c-s-check-loaded');
+                body.removeAttribute('data-gr-ext-installed');
+              });
+            `,
+          }}
+        />
+      </head>
+      <body className="flex" suppressHydrationWarning>
         <div className="flex-1 flex flex-col min-h-screen">
-          <Navbar />
-          <main className="flex-1 overflow-auto bg-gray-100">{children}</main>
+          {children}
         </div>
       </body>
     </html>

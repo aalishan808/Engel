@@ -8,6 +8,7 @@ export const productSchema = z.object({
   stock: z.number().min(0, "Stock must be 0 or more"),
   category: z.string().min(1, "Category is required"),
   imageUrl: z.string().url("Image URL must be valid"),
+  
 });
 
 // ✅ Correctly exported type
